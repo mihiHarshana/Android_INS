@@ -4,7 +4,22 @@ public class Uses {
 
 	private String uname;
 	private String upword;
+	private String description;
+	private String medications;
 	
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getMedications() {
+		return medications;
+	}
+	public void setMedications(String medications) {
+		this.medications = medications;
+	}
 	public String getUname() {
 		return uname;
 	}
