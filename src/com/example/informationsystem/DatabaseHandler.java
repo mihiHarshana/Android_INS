@@ -10,10 +10,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-	private static final int DATABASE_VERSION =2;
+	private static final int DATABASE_VERSION =3;
 	private static final String DATABASE_NAME = "INS";
-	private static final String TABLE_PATIENT_DATA = "patient_data";
 	
+	
+	private static final String TABLE_PATIENT_DATA = "patient_data";
+	//filds for Patient data table
 	private static final String KEY_ID ="id";
 	private static final String KEY_NAME ="name";
 	private static final String KEY_ADDRESS ="address";
@@ -21,6 +23,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_SALUTATION ="salutation";
 	private static final String KEY_DESCRIPTION ="description";
 	private static final String KEY_MEDICATION ="medication";
+	
+	
+	private static final String TABLE_USER_DATA = "user_data";
+	//fieds for user table
+	private static final String KEY_UID ="uId";
+	private static final String KEY_UNAME = "uname";
+	private static final String KEY_UPWORD = "upword";
+	private static final String KEY_UTYPE = "utype";
 	
 	public DatabaseHandler(Context context) {
 		super (context, DATABASE_NAME, null,DATABASE_VERSION);
@@ -35,8 +45,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALUTATION + " TEXT,"
 				+ KEY_DESCRIPTION + " TEXT,"
 				+ KEY_MEDICATION + " TEXT )";
-				
+		
+		
+		String CREATE_USER_DATA = "CREATE TABLE " + TABLE_USER_DATA + "("
+				+ KEY_UID + " INTEGER PRIMARY KEY ,"
+				+ KEY_UNAME + " TEXT,"
+				+ KEY_UPWORD +" TEXT,"
+				+ KEY_UTYPE + " TEXT )";
+				 
 		db.execSQL(CREATE_PATIENT_DATA);
+		db.execSQL(CREATE_USER_DATA);
 		
 	}
 	
@@ -129,5 +147,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 	}
 	
+	
+	void addUsers(Users users) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values= new ContentValues();
+		values.put(KEY_UID, users.getUid());
+		values.put(KEY_UNAME, users.getUname());
+		values.put(KEY_UPWORD, users.getUpword());
+		values.put(KEY_UTYPE, users.getUtype());
+		
+		db.insert(TABLE_USER_DATA, null, values);
+		db.close();
+	}
+	
+	
+	Users getUser(String  uname) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.query(TABLE_USER_DATA, new String[] {KEY_UID , KEY_UNAME , KEY_UPWORD, KEY_UTYPE}, KEY_UNAME + "=?" ,
+				new String [] {String.valueOf(uname) } , null,null,null,null);
+		
+		if (cursor != null && cursor.getCount() != 0)  {
+			cursor.moveToFirst();
+			Users user = new Users(Integer.parseInt(cursor.getString(0)), cursor.getString(1) , cursor.getString(2), cursor.getString(3)  );
+		
+		return user;	
+		} else {
+			
+			return null;
+		}
+		
+	}
 	
 }

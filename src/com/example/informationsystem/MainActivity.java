@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
-
+public DatabaseHandler db = new DatabaseHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +66,8 @@ public class MainActivity extends ActionBarActivity {
     	   
      	EditText txtUName = (EditText) findViewById(R.id.txtUserName);
      	EditText txtPword =(EditText) findViewById(R.id.txtPasswprd);
-     	txtUName.setText("admin");
-     	txtPword.setText("admin");
+//     	txtUName.setText("admin");
+//     	txtPword.setText("admin");
     	
     	if (txtUName.getText().toString().matches("")) {
     		//lblUName.setText("Invalid User Name");
@@ -76,16 +76,39 @@ public class MainActivity extends ActionBarActivity {
     	} else if (txtPword.getText().toString().matches("")) {
     		Toast.makeText(this, "Password cannot be blank" , Toast.LENGTH_SHORT).show();
     	}
-    	else {
-    		// should be checked for correct user name and password
-    		if (txtUName.getText().toString().matches("admin") &&  txtPword.getText().toString().matches("admin") ){
-    			Intent intent = new Intent(this, AddPatientData.class);
-            	startActivity(intent);		
-    		} else {
-    			Toast.makeText(this, "User name or password incorrect" , Toast.LENGTH_SHORT).show();
+    	else { 
+    		
+    		Users users = db.getUser(txtUName.getText().toString());
+    		
+    		if (users != null) {
     			
+    			if (txtUName.getText().toString().matches(users.getUname())) {
+    				if (txtPword.getText().toString().matches(users.getUpword())) {
+    					Intent intent  = new Intent (this, AddPatientData.class);
+    					startActivity(intent);
+    				} else {
+    					Toast.makeText(this, "Incorrect password" , Toast.LENGTH_SHORT).show();
+    				} 
+    			} else {
+    				Toast.makeText(this, "Incorrect User name " , Toast.LENGTH_SHORT).show();
+    			}
+    			
+    		}  else {
+    			Toast.makeText(this, "User Not found" , Toast.LENGTH_SHORT).show();
+    			txtPword.setText("");
+    			txtUName.setText("");
+    			txtUName.setFocusable(true);
     		}
-    	
+
+//    		// should be checked for correct user name and password
+//    		if (txtUName.getText().toString().matches("admin") &&  txtPword.getText().toString().matches("admin") ){
+//    			Intent intent = new Intent(this, AddPatientData.class);
+//            	startActivity(intent);		
+//    		} else {
+//    			Toast.makeText(this, "User name or password incorrect" , Toast.LENGTH_SHORT).show();
+//    			
+//    		}
+//    	
     	}
     } 
 }
