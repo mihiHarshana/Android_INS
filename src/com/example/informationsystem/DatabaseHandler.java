@@ -10,13 +10,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-	private static final int DATABASE_VERSION =1;
+	private static final int DATABASE_VERSION =2;
 	private static final String DATABASE_NAME = "INS";
 	private static final String TABLE_PATIENT_DATA = "patient_data";
 	
 	private static final String KEY_ID ="id";
 	private static final String KEY_NAME ="name";
 	private static final String KEY_ADDRESS ="address";
+	private static final String KEY_PATIENT_ID ="patientId";
+	private static final String KEY_SALUTATION ="salutation";
+	private static final String KEY_DESCRIPTION ="description";
+	private static final String KEY_MEDICATION ="medication";
 	
 	public DatabaseHandler(Context context) {
 		super (context, DATABASE_NAME, null,DATABASE_VERSION);
@@ -26,8 +30,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String CREATE_PATIENT_DATA = "CREATE TABLE " + TABLE_PATIENT_DATA + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY,"
 				+ KEY_NAME + " TEXT," 
-				+ KEY_ADDRESS + " TEXT" + ")";
-						
+				+ KEY_ADDRESS + " TEXT," 
+				+ KEY_PATIENT_ID + " TEXT,"
+				+ KEY_SALUTATION + " TEXT,"
+				+ KEY_DESCRIPTION + " TEXT,"
+				+ KEY_MEDICATION + " TEXT )";
+				
 		db.execSQL(CREATE_PATIENT_DATA);
 		
 	}
@@ -40,6 +48,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		ContentValues values= new ContentValues();
 		values.put(KEY_NAME, patient.getPatientName());
 		values.put(KEY_ADDRESS, patient.getPatientAddress());
+		values.put(KEY_PATIENT_ID, patient.getPatientName());
+		values.put(KEY_SALUTATION, patient.getPatientAddress());
+		values.put(KEY_DESCRIPTION, patient.getPatientName());
+		values.put(KEY_MEDICATION, patient.getPatientAddress());
 		
 		db.insert(TABLE_PATIENT_DATA, null, values);
 		db.close();
