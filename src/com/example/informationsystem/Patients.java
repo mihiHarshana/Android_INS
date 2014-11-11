@@ -1,22 +1,25 @@
 package com.example.informationsystem;
 
 public class Patients {
-	private int id;
+	
 	private String patientName;
 	private String patientAddress;
-	private String satulation;
+	private int pid;
 	private String description;
 	private String medications;
 	private String patientId;
+	private String pAge;
+	
+	
+	
+	public String getpAge() {
+		return pAge;
+	}
+	public void setpAge(String pAge) {
+		this.pAge = pAge;
+	}
 
-	
-	
-	public String getSatulation() {
-		return satulation;
-	}
-	public void setSatulation(String satulation) {
-		this.satulation = satulation;
-	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -33,13 +36,14 @@ public class Patients {
 		return patientId;
 	}
 	public void setPatientId(String patientId) {
+		
 		this.patientId = patientId;
 	}
 	public int getId() {
-		return id;
+		return pid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String pid) {
+		this.pid = Integer.parseInt(pid);
 	}
 	public String getPatientName() {
 		return patientName;
@@ -54,10 +58,14 @@ public class Patients {
 		this.patientAddress = patientAddress;
 	}
 	
-	public Patients (int id, String name, String address) {
-		this.id=id;
+	public Patients (int pid ,String name, String address, String patientID,String Description , String Medication ,String age) {
+		this.pid=pid;
 		this.patientName= name;
 		this.patientAddress = address;
+		this.description = Description;
+		this.medications = Medication;
+		this.pAge = age;
+		this.patientId=patientID;
 		
 	}
 	public Patients() {
