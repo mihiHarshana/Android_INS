@@ -7,10 +7,19 @@
     <string name="title_activity_add_patient_data">Add Patient Data</string>
     <string name="Patient_Id">Patient Id :</string>
     <string name="Patient_salutation">Salutation :</string>
-	<string name="patient_name">Patient Name : </string>
-	<string name="patient_Address">Address :</string>
-	<string name="Description">DEscription :</string>
-	<string name="Medication">Medication :</string>
-	<string name="btnSave">Save</string>
-	<string name="btnCancel">Cancel</string>
+    <string name="patient_name">Patient Name : </string>
+    <string name="patient_Address">Address :</string>
+    <string name="Description">Description :</string>
+    <string name="Medication">Medication :</string>
+    <string name="btnSave">Save</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="title_activity_search_patient">SearchPatient</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_patient_view">PatientView</string>
+    <string name="btnSearch">Search</string>
+    <string name="btnClear">Clear</string>
+    <string name="btnClose">Close</string>
+    <string name="Age">Age :</string>
+    <string name="title_activity_add_user">AddUser</string>
+
 </resources>

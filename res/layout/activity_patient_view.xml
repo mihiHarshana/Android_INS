@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.informationsystem.PatientView" >
+
+    <Button
+        android:id="@+id/btnSearch"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSave"
+        android:layout_alignBottom="@+id/btnSave"
+        android:layout_toRightOf="@+id/btnSave"
+        android:text="@string/btnSearch"
+        android:onClick="SearchPatient"/>
+
+    <Button
+        android:id="@+id/btnClear"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSearch"
+        android:layout_alignBottom="@+id/btnSearch"
+        android:layout_toRightOf="@+id/btnSearch"
+        android:text="@string/btnClear" 
+        android:onClick="ClearData"/>
+
+    <Button
+        android:id="@+id/btnClose"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnClear"
+        android:layout_alignBottom="@+id/btnClear"
+        android:layout_toRightOf="@+id/btnClear"
+        android:text="@string/btnClose" 
+        android:onClick="Close"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="42dp"
+        android:text="@string/Patient_Id" />
+
+    <EditText
+        android:id="@+id/txtPatientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPatId"
+        android:layout_below="@+id/textView1"
+        
+        android:inputType="textPersonName"
+        android:onClick="SearchPatient" />
+
+    <EditText
+        android:id="@+id/txtPatId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_toRightOf="@+id/textView2"  
+        android:inputType="number"
+         
+          />
+    <requestFocus />
+
+    <EditText
+        android:id="@+id/txtPatientMedication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/txtPatientDescription"
+        android:inputType="textCapSentences"
+         />
+
+    <Button
+        android:id="@+id/btnSave"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/txtPatientDescription"
+        android:layout_marginTop="37dp"
+        android:onClick="AddPatientData"
+        android:text="@string/btnSave" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/txtPatientAddress"
+        android:layout_marginTop="27dp"
+        android:text="@string/Medication" />
+
+    <EditText
+        android:id="@+id/txtPatientDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPatientName"
+        android:layout_below="@+id/txtPatientMedication"
+        android:inputType="textAutoCorrect"
+         >
+
+       
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPatientDescription"
+        android:layout_alignBottom="@+id/txtPatientDescription"
+        android:layout_alignLeft="@+id/textView4"
+        android:text="@string/Description" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/txtPatientAddress"
+        android:text="@string/Age" />
+
+    <EditText
+        android:id="@+id/txtPatientAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_toRightOf="@+id/textView2"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPatientAddress"
+        android:layout_alignBottom="@+id/txtPatientAddress"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="@string/patient_Address" />
+
+    <EditText
+        android:id="@+id/txtPatientAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPatientAge"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtPatientName"
+        android:inputType="number"
+         />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPatientName"
+        android:layout_alignBottom="@+id/txtPatientName"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="@string/patient_name" />
+
+</RelativeLayout>
